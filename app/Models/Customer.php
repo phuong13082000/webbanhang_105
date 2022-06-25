@@ -14,5 +14,5 @@ class Customer extends Model
         'customer_phone'
     ];
     protected $primaryKey = 'customer_id';
-    protected $table = 'tbl_customers';
+    protected $table = 'tbl_customer';
 }

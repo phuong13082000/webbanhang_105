@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class CategoryProduct extends Model
 {
     public $timestamps = false; //set time to false
     protected $fillable = [
@@ -15,5 +15,5 @@ class Category extends Model
         'category_status'
     ];
     protected $primaryKey = 'category_id';
-    protected $table = 'tbl_category';
+    protected $table = 'tbl_category_product';
 }

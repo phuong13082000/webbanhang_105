@@ -13,7 +13,7 @@
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button>
       </div>
       <div class="col-sm-4">
       </div>
@@ -49,9 +49,9 @@
             <th>Hình sản phẩm</th>
             <th>Danh mục</th>
             <th>Thương hiệu</th>
-            
+
             <th>Hiển thị</th>
-            
+
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -63,7 +63,7 @@
             <td>{{ $pro->product_quantity }}</td>
             <td>{{ $pro->product_slug }}</td>
             <td>{{ number_format($pro->product_price,0,',','.') }}đ</td>
-            <td><img src="public/uploads/product/{{ $pro->product_image }}" height="100" width="100"></td>
+            <td><img src="../public/uploads/product/{{ $pro->product_image }}" height="100" width="100"></td>
             <td>{{ $pro->category_name }}</td>
             <td>{{ $pro->brand_name }}</td>
 
@@ -71,20 +71,20 @@
               <?php
                if($pro->product_status==0){
                 ?>
-                <a href="{{URL::to('/unactive-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                <a href="{{URL::to('/admin/unactive-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                 <?php
                  }else{
-                ?>  
-                 <a href="{{URL::to('/active-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                ?>
+                 <a href="{{URL::to('/admin/active-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
                 <?php
                }
               ?>
             </span></td>
-           
+
             <td>
-              <a href="{{URL::to('/edit-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/admin/edit-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/admin/delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -95,11 +95,11 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
+
         <div class="col-sm-5 text-center">
           <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
-        <div class="col-sm-7 text-right text-center-xs">                
+        <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">
             {!!$all_product->links()!!}
           </ul>

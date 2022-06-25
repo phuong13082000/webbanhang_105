@@ -59,20 +59,20 @@
               <?php
                if($cate_pro->category_status==0){
                 ?>
-                <a href="{{URL::to('/unactive-category/'.$cate_pro->category_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                <a href="{{URL::to('/admin/unactive-category/'.$cate_pro->category_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                 <?php
                  }else{
                 ?>
-                 <a href="{{URL::to('/active-category/'.$cate_pro->category_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                 <a href="{{URL::to('/admin/active-category/'.$cate_pro->category_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
                 <?php
                }
               ?>
             </span></td>
 
             <td>
-              <a href="{{URL::to('/edit-category/'.$cate_pro->category_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/admin/edit-category/'.$cate_pro->category_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/delete-category/'.$cate_pro->category_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/admin/delete-category/'.$cate_pro->category_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -81,7 +81,7 @@
         </tbody>
       </table>
       <!-----import data---->
-      <form action="{{url('import-csv')}}" method="POST" enctype="multipart/form-data">
+      <form action="{{url('/admin/import-csv')}}" method="POST" enctype="multipart/form-data">
           @csrf
 
         <input type="file" name="file" accept=".xlsx"><br>
@@ -90,7 +90,7 @@
       </form>
 
     <!-----export data---->
-       <form action="{{url('export-csv')}}" method="POST">
+       <form action="{{url('/admin/export-csv')}}" method="POST">
           @csrf
        <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">
       </form>

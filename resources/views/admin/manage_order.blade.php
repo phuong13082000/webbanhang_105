@@ -6,9 +6,6 @@
       Liệt kê đơn hàng
     </div>
     <div class="row w3-res-tb">
-     
-     
-    
     </div>
     <div class="table-responsive">
                       <?php
@@ -21,7 +18,7 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-           
+
             <th>Thứ tự</th>
             <th>Mã đơn hàng</th>
             <th>Ngày tháng đặt hàng</th>
@@ -31,11 +28,11 @@
           </tr>
         </thead>
         <tbody>
-          @php 
+          @php
           $i = 0;
           @endphp
           @foreach($order as $key => $ord)
-            @php 
+            @php
             $i++;
             @endphp
           <tr>
@@ -44,17 +41,17 @@
             <td>{{ $ord->created_at }}</td>
             <td>@if($ord->order_status==1)
                     Đơn hàng mới
-                @else 
+                @else
                     Đã xử lý
                 @endif
             </td>
-           
-           
+
+
             <td>
-              <a href="{{URL::to('/view-order/'.$ord->order_code)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/admin/view-order/'.$ord->order_code)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-eye text-success text-active"></i></a>
 
-              <a onclick="return confirm('Bạn có chắc là muốn xóa đơn hàng này ko?')" href="{{URL::to('/delete-order/'.$ord->order_code)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa đơn hàng này ko?')" href="{{URL::to('/admin/delete-order/'.$ord->order_code)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
 
@@ -66,18 +63,18 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
+
         <div class="col-sm-5 text-center">
           <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
-        <div class="col-sm-7 text-right text-center-xs">                
+        <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">
             {!!$order->links()!!}
           </ul>
         </div>
       </div>
     </footer>
-   
+
   </div>
 </div>
 @endsection

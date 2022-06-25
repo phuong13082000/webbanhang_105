@@ -50,7 +50,7 @@ class AdminController extends Controller
             if ($login_count > 0) {
                 Session::put('admin_name', $login->admin_name);
                 Session::put('admin_id', $login->admin_id);
-                return Redirect::to('/dashboard');
+                return Redirect::to('/admin/dashboard');
             }
         } else {
             Session::put('message', 'Mật khẩu hoặc tài khoản bị sai. Hãy nhập lại');

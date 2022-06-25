@@ -24,7 +24,7 @@ class Admin extends Model
         return $this->belongsToMany('App\Models\Roles');
     }
 
-    public function hasAnyRoles($roles)
+    public function hasAnyRoles($roles): bool
     {
         if (is_array($roles)) {
             foreach ($roles as $role) {
@@ -40,9 +40,11 @@ class Admin extends Model
         return false;
     }
 
-    public function hasRole($role)
+    public function hasRole($role): bool
     {
-        if ($this->roles()->where('name', $role)->first()) {
+        if ($this->roles()
+            ->where('name', $role)
+            ->first()) {
             return true;
         }
         return false;

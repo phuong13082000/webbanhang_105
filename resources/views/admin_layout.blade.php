@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--logo start-->
 <div class="brand">
     <a target="_blank" href="{{url('/')}}" class="logo">
-        Shop
+        Admin
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -54,13 +54,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="{{('public/backend/images/2.png')}}">
+                <img alt="" src="{{('../public/backend/images/2.png')}}">
                 <span class="username">
                 	<?php
 					$name = Session::get('admin_name');
 					if($name){
 						echo $name;
-
 					}
 					?>
 
@@ -70,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i>Đăng xuất</a></li>
+                <li><a href="{{URL::to('/admin/logout')}}"><i class="fa fa-key"></i>Đăng xuất</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -87,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="{{URL::to('/dashboard')}}">
+                    <a class="active" href="{{URL::to('/admin/dashboard')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Tổng quan</span>
                     </a>
@@ -99,8 +98,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Slider</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{URL::to('/manage-slider')}}">Liệt kê slider</a></li>
-                        <li><a href="{{URL::to('/add-slider')}}">Thêm slider</a></li>
+                        <li><a href="{{URL::to('/admin/manage-slider')}}">Liệt kê slider</a></li>
+                        <li><a href="{{URL::to('/admin/add-slider')}}">Thêm slider</a></li>
                     </ul>
                 </li>
 
@@ -111,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Đơn hàng</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/manage-order')}}">Quản lý đơn hàng</a></li>
+						<li><a href="{{URL::to('/admin/manage-order')}}">Quản lý đơn hàng</a></li>
 
 
                     </ul>
@@ -122,8 +121,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Mã giảm giá</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{URL::to('/insert-coupon')}}">Quản lý mã giảm giá</a></li>
-                        <li><a href="{{URL::to('/list-coupon')}}">Liệt kê mã giảm giá</a></li>
+                        <li><a href="{{URL::to('/admin/insert-coupon')}}">Quản lý mã giảm giá</a></li>
+                        <li><a href="{{URL::to('/admin/list-coupon')}}">Liệt kê mã giảm giá</a></li>
                     </ul>
                 </li>
                  <li class="sub-menu">
@@ -132,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Vận chuyển</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{URL::to('/delivery')}}">Quản lý vận chuyển</a></li>
+                        <li><a href="{{URL::to('/admin/delivery')}}">Quản lý vận chuyển</a></li>
 
 
 
@@ -144,8 +143,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Danh mục sản phẩm</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-category')}}">Thêm danh mục sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-category')}}">Liệt kê danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('/admin/add-category')}}">Thêm danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('/admin/all-category')}}">Liệt kê danh mục sản phẩm</a></li>
 
                     </ul>
                 </li>
@@ -155,8 +154,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Thương hiệu sản phẩm</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-brand-product')}}">Thêm hiệu sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-brand-product')}}">Liệt kê thương hiệu sản phẩm</a></li>
+						<li><a href="{{URL::to('/admin/add-brand-product')}}">Thêm hiệu sản phẩm</a></li>
+						<li><a href="{{URL::to('/admin/all-brand-product')}}">Liệt kê thương hiệu sản phẩm</a></li>
 
                     </ul>
                 </li>
@@ -166,8 +165,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Sản phẩm</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-product')}}">Liệt kê sản phẩm</a></li>
+						<li><a href="{{URL::to('/admin/add-product')}}">Thêm sản phẩm</a></li>
+						<li><a href="{{URL::to('/admin/all-product')}}">Liệt kê sản phẩm</a></li>
 
                     </ul>
                 </li>
@@ -177,8 +176,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Users</span>
                     </a>
                     <ul class="sub">
-                         <li><a href="{{URL::to('/add-users')}}">Thêm user</a></li>
-                        <li><a href="{{URL::to('/users')}}">Liệt kê user</a></li>
+                         <li><a href="{{URL::to('/admin/add-users')}}">Thêm user</a></li>
+                        <li><a href="{{URL::to('/admin/users')}}">Liệt kê user</a></li>
 
                     </ul>
                 </li>
@@ -256,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         // alert(order_qty);
         // alert(order_code);
         $.ajax({
-                url : '{{url('/update-qty')}}',
+                url : '{{url('admin/update-qty')}}',
                 method: 'POST',
                 data:{_token:_token, order_product_id:order_product_id ,order_qty:order_qty ,order_code:order_code},
                 // dataType:"JSON",
@@ -302,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         if(j==0){
 
                 $.ajax({
-                        url : '{{url('/update-order-qty')}}',
+                        url : '{{url('admin/update-order-qty')}}',
                             method: 'POST',
                             data:{_token:_token, order_status:order_status ,order_id:order_id ,quantity:quantity, order_product_id:order_product_id},
                             success:function(data){
@@ -323,7 +322,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function fetch_delivery(){
             var _token = $('input[name="_token"]').val();
              $.ajax({
-                url : '{{url('/select-feeship')}}',
+                url : '{{url('admin/select-feeship')}}',
                 method: 'POST',
                 data:{_token:_token},
                 success:function(data){
@@ -339,7 +338,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             // alert(feeship_id);
             // alert(fee_value);
             $.ajax({
-                url : '{{url('/update-delivery')}}',
+                url : '{{url('admin/update-delivery')}}',
                 method: 'POST',
                 data:{feeship_id:feeship_id, fee_value:fee_value, _token:_token},
                 success:function(data){
@@ -360,7 +359,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            // alert(wards);
            // alert(fee_ship);
             $.ajax({
-                url : '{{url('/insert-delivery')}}',
+                url : '{{url('admin/insert-delivery')}}',
                 method: 'POST',
                 data:{city:city, province:province, _token:_token, wards:wards, fee_ship:fee_ship},
                 success:function(data){
@@ -385,7 +384,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 result = 'wards';
             }
             $.ajax({
-                url : '{{url('/select-delivery')}}',
+                url : '{{url('admin/select-delivery')}}',
                 method: 'POST',
                 data:{action:action,ma_id:ma_id,_token:_token},
                 success:function(data){

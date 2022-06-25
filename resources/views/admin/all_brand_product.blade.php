@@ -13,7 +13,7 @@
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button>
       </div>
       <div class="col-sm-4">
       </div>
@@ -45,7 +45,7 @@
             <th>Tên thương hiệu</th>
             <th>Brand Slug</th>
             <th>Hiển thị</th>
-            
+
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -59,20 +59,20 @@
               <?php
                if($brand_pro->brand_status==0){
                 ?>
-                <a href="{{URL::to('/unactive-brand-product/'.$brand_pro->brand_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                <a href="{{URL::to('/admin/unactive-brand-product/'.$brand_pro->brand_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                 <?php
                  }else{
-                ?>  
-                 <a href="{{URL::to('/active-brand-product/'.$brand_pro->brand_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                ?>
+                 <a href="{{URL::to('/admin/active-brand-product/'.$brand_pro->brand_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
                 <?php
                }
               ?>
             </span></td>
-           
+
             <td>
-              <a href="{{URL::to('/edit-brand-product/'.$brand_pro->brand_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/admin/edit-brand-product/'.$brand_pro->brand_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa thương hiệu này ko?')" href="{{URL::to('/delete-brand-product/'.$brand_pro->brand_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa thương hiệu này ko?')" href="{{URL::to('/admin/delete-brand-product/'.$brand_pro->brand_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -83,11 +83,11 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
+
         <div class="col-sm-5 text-center">
           <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
-        <div class="col-sm-7 text-right text-center-xs">                
+        <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">
              {!!$all_brand_product->links()!!}
           </ul>
