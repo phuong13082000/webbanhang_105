@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Login;
+use App\Models\Social;
 use App\Rules\Captcha;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
@@ -17,7 +19,7 @@ class AdminController extends Controller
 
     public function AuthLogin()
     {
-        $admin_id = Session::get('admin_id');
+        $admin_id = Auth::id(); //lay thong tin dang nhap
         if ($admin_id) {
             return Redirect::to('dashboard');
         } else {
@@ -56,6 +58,46 @@ class AdminController extends Controller
             Session::put('message', 'Mật khẩu hoặc tài khoản bị sai. Hãy nhập lại');
             return Redirect::to('/admin');
         }
+    }
+
+    public function findOrCreateUser($users, $provider)
+    {
+        $authUser = Social::where('provider_user_id', $users->id)
+            ->first();
+
+        if ($authUser) {
+            return $authUser;
+        }
+
+        $hieu = new Social([
+            'provider_user_id' => $users->id,
+            'provider' => strtoupper($provider)
+        ]);
+
+        $orang = Login::where('admin_email', $users->email)->first();
+
+        if (!$orang) {
+            $orang = Login::create([
+                'admin_name' => $users->name,
+                'admin_email' => $users->email,
+                'admin_password' => '',
+                'admin_phone' => '',
+                'admin_status' => 1
+            ]);
+        }
+
+        $hieu->login()
+            ->associate($orang);
+
+        $hieu->save();
+
+        $account_name = Login::where('admin_id', $hieu->user)
+            ->first();
+
+        Session::put('admin_name', $account_name->admin_name);
+        Session::put('admin_id', $account_name->admin_id);
+
+        return redirect('admin/dashboard')->with('message', 'Đăng nhập Admin thành công');
     }
 
     public function logout()

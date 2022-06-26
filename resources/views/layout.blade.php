@@ -20,10 +20,6 @@
     <link href="{{asset('public/frontend/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/responsive.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
     <link rel="shortcut icon" href="{{('public/frontend/images/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -104,15 +100,17 @@
                             <?php
                             }elseif($customer_id != NULL && $shipping_id != NULL){
                             ?>
+
                             <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+
                             <?php
                             }else{
                             ?>
                             <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+
                             <?php
                             }
                             ?>
-
 
                             <li><a href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                             <?php
@@ -213,12 +211,9 @@
                                     <img alt="{{$slide->slider_desc}}"
                                          src="{{asset('public/uploads/slider/'.$slide->slider_image)}}" height="200"
                                          width="100%" class="img img-responsive img-slider">
-
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
 
                     <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
@@ -228,7 +223,6 @@
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
@@ -264,8 +258,6 @@
                             </ul>
                         </div>
                     </div><!--/brands_products-->
-
-
                 </div>
             </div>
 
@@ -438,7 +430,6 @@
 
 </footer><!--/Footer-->
 
-
 <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
 <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('public/frontend/js/jquery.scrollUp.min.js')}}"></script>
@@ -446,18 +437,13 @@
 <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{asset('public/frontend/js/main.js')}}"></script>
 
-
 <script src="{{asset('public/frontend/js/sweetalert.min.js')}}"></script>
-{{--  <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
- <script>paypal.Buttons().render('body');</script> --}}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=2339123679735877&autoLogAppEvents=1"></script>
 
-
 <script type="text/javascript">
-
     $(document).ready(function () {
         $('.send_order').click(function () {
             swal({
@@ -511,15 +497,11 @@
                         swal("Đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng", "error");
 
                     }
-
                 });
-
-
         });
     });
-
-
 </script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('.add-to-cart').click(function () {
@@ -533,6 +515,8 @@
             var cart_product_price = $('.cart_product_price_' + id).val();
             var cart_product_qty = $('.cart_product_qty_' + id).val();
             var _token = $('input[name="_token"]').val();
+
+            //neu so luong dat lon hon so luong o trong kho
             if (parseInt(cart_product_qty) > parseInt(cart_product_quantity)) {
                 alert('Làm ơn đặt nhỏ hơn ' + cart_product_quantity);
             } else {

@@ -51,32 +51,32 @@
                             <td>{{ $cou->coupon_code }}</td>
                             <td>{{ $cou->coupon_time }}</td>
                             <td><span class="text-ellipsis">
-              <?php
+                                <?php
                                     if($cou->coupon_condition == 1){
                                     ?>
                 Giảm theo %
-                <?php
+                                <?php
                                     }else{
                                     ?>
                 Giảm theo tiền
-                <?php
+                                <?php
                                     }
                                     ?>
-            </span>
+                                </span>
                             </td>
                             <td><span class="text-ellipsis">
-              <?php
+                                <?php
                                     if($cou->coupon_condition == 1){
                                     ?>
                 Giảm {{$cou->coupon_number}} %
-                <?php
+                                <?php
                                     }else{
                                     ?>
                 Giảm {{$cou->coupon_number}} k
-                <?php
+                                <?php
                                     }
                                     ?>
-            </span></td>
+                                </span></td>
                             <td>
                                 <a onclick="return confirm('Bạn có chắc là muốn xóa mã này ko?')"
                                    href="{{URL::to('/admin/delete-coupon/'.$cou->coupon_id)}}"

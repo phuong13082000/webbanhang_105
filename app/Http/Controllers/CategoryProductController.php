@@ -159,8 +159,8 @@ class CategoryProductController extends Controller
             ->get();
 
         $category_by_id = DB::table('tbl_product')
-            ->join('tbl_category_product', 'tbl_product.category_id', '=', 'tbl_category.category_id')
-            ->where('tbl_category.slug_category_product', $slug_category_product)
+            ->join('tbl_category_product', 'tbl_product.category_id', '=', 'tbl_category_product.category_id')
+            ->where('tbl_category_product.slug_category_product', $slug_category_product)
             ->paginate(6);
 
         $category_name = DB::table('tbl_category_product')

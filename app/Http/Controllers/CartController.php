@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use App\Models\Slider;
+use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -52,19 +53,20 @@ class CartController extends Controller
 
     public function gio_hang(Request $request)
     {
-        //seo
         //slide
         $slider = Slider::orderBy('slider_id', 'DESC')
             ->where('slider_status', '1')
             ->take(4)
             ->get();
 
+        //seo
         $meta_desc = "Giỏ hàng của bạn";
-        $meta_keywords = "Giỏ hàng Ajax";
-        $meta_title = "Giỏ hàng Ajax";
+        $meta_keywords = "Giỏ hàng";
+        $meta_title = "Giỏ hàng";
         $url_canonical = $request->url();
         //--seo
-        $cate_product = DB::table('tbl_category')
+
+        $cate_product = DB::table('tbl_category_product')
             ->where('category_status', '0')
             ->orderby('category_id', 'desc')
             ->get();
@@ -191,6 +193,7 @@ class CartController extends Controller
             ->where('product_id', $productId)
             ->first();
 
+        //vendor/bumbummen99
         $data['id'] = $product_info->product_id;
         $data['qty'] = $quantity;
         $data['name'] = $product_info->product_name;
@@ -198,6 +201,8 @@ class CartController extends Controller
         $data['weight'] = $product_info->product_price;
         $data['options']['image'] = $product_info->product_image;
         Cart::add($data);
+        //set-thue
+        Cart::setGlobalTax(10);
         return Redirect::to('/show-cart');
     }
 

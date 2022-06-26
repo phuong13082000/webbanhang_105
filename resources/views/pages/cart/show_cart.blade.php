@@ -11,8 +11,7 @@
 			</div>
 			<div class="table-responsive cart_info">
 				<?php
-				$content = Cart::content();
-				
+				    $content = Cart::content();
 				?>
 				<table class="table table-condensed">
 					<thead>
@@ -50,7 +49,6 @@
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">
-									
 									<?php
 									$subtotal = $v_content->price * $v_content->qty;
 									echo number_format($subtotal).' '.'vnđ';
@@ -70,35 +68,29 @@
 
 	<section id="do_action">
 		<div class="container">
-		
 			<div class="row">
-			
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Tổng <span>{{Cart::total().' '.'vnđ'}}</span></li>
-							<li>Thuế <span>{{Cart::tax().' '.'vnđ'}}</span></li>
+							<li>Tổng <span>{{Cart::total(0).' '.'vnđ'}}</span></li>
+							<li>Thuế <span>{{Cart::tax(0).' '.'vnđ'}}</span></li>
 							<li>Phí vận chuyển <span>Free</span></li>
-							<li>Thành tiền <span>{{Cart::total().' '.'vnđ'}}</span></li>
+							<li>Thành tiền <span>{{Cart::total(0).' '.'vnđ'}}</span></li>
 						</ul>
-						{{-- 	<a class="btn btn-default update" href="">Update</a> --}}
-							  <?php
+                                <?php
                                    $customer_id = Session::get('customer_id');
-                                   if($customer_id!=NULL){ 
+                                   if($customer_id!=NULL){
                                  ?>
-                                  
+
                                 <a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Thanh toán</a>
                                 <?php
                             }else{
                                  ?>
-                                 
+
                                  <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a>
-                                 <?php 
+                                 <?php
                              }
                                  ?>
-                                
-							
-
 					</div>
 				</div>
 			</div>

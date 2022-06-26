@@ -71,7 +71,7 @@
                                 <td><input type="checkbox" name="user_role" {{$user->hasRole('user') ? 'checked' : ''}}>
                                 </td>
                                 <td>
-                                    <input type="submit" value="Assign roles" class="btn btn-sm btn-default">
+                                    <input type="submit" value="Trao Quyền" class="btn btn-sm btn-default">
                                 </td>
                             </tr>
                         </form>

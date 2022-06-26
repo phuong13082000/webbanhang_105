@@ -35,11 +35,6 @@ class HomeController extends Controller
             ->orderby('brand_id', 'desc')
             ->get();
 
-        // $all_product = DB::table('tbl_product')
-        // ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-        // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        // ->orderby('tbl_product.product_id','desc')->get();
-
         $all_product = DB::table('tbl_product')
             ->where('product_status', '0')
             ->orderby(DB::raw('RAND()'))
@@ -59,7 +54,7 @@ class HomeController extends Controller
     public function send_mail()
     {
         //send mail
-        $to_name = "Hoang Phuong";
+        $to_name = "HoangPhuong";
         $to_email = "hoangphuong0813@gmail.com";//send to this email
 
         $data = array("name" => "Mail từ tài khoản Khách hàng", "body" => 'Mail gửi về vấn về hàng hóa'); //body of mail.blade.php

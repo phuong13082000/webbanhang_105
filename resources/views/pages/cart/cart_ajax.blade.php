@@ -62,23 +62,23 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-								
+
 									<input class="cart_quantity" type="number" min="1" name="cart_qty[{{$cart['session_id']}}]" value="{{$cart['product_qty']}}"  >
-								
-									
+
+
 								</div>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">
 									{{number_format($subtotal,0,',','.')}}đ
-									
+
 								</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="{{url('/del-product/'.$cart['session_id'])}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
-						
+
 						@endforeach
 						<tr>
 							<td><input type="submit" value="Cập nhật giỏ hàng" name="update_qty" class="check_out btn btn-default btn-sm"></td>
@@ -92,22 +92,21 @@
 							<td>
 								@if(Session::get('customer_id'))
 	                          	<a class="btn btn-default check_out" href="{{url('/checkout')}}">Đặt hàng</a>
-	                          	@else 
+	                          	@else
 	                          	<a class="btn btn-default check_out" href="{{url('/dang-nhap')}}">Đặt hàng</a>
 								@endif
 							</td>
 
-							
+
 							<td colspan="2">
 							<li>Tổng tiền :<span>{{number_format($total,0,',','.')}}đ</span></li>
 							@if(Session::get('coupon'))
 							<li>
-								
 									@foreach(Session::get('coupon') as $key => $cou)
 										@if($cou['coupon_condition']==1)
 											Mã giảm : {{$cou['coupon_number']}} %
 											<p>
-												@php 
+												@php
 												$total_coupon = ($total*$cou['coupon_number'])/100;
 												echo '<p><li>Tổng giảm:'.number_format($total_coupon,0,',','.').'đ</li></p>';
 												@endphp
@@ -116,37 +115,30 @@
 										@elseif($cou['coupon_condition']==2)
 											Mã giảm : {{number_format($cou['coupon_number'],0,',','.')}} k
 											<p>
-												@php 
+												@php
 												$total_coupon = $total - $cou['coupon_number'];
-								
+
 												@endphp
 											</p>
 											<p><li>Tổng đã giảm :{{number_format($total_coupon,0,',','.')}}đ</li></p>
 										@endif
 									@endforeach
-								
-
-
 							</li>
-							@endif 
+							@endif
 						{{-- 	<li>Thuế <span></span></li>
 							<li>Phí vận chuyển <span>Free</span></li> --}}
-							
-							
 						</td>
 						</tr>
-						@else 
+						@else
 						<tr>
 							<td colspan="5"><center>
-							@php 
+							@php
 							echo 'Làm ơn thêm sản phẩm vào giỏ hàng';
 							@endphp
 							</center></td>
 						</tr>
 						@endif
 					</tbody>
-
-					
 
 				</form>
 					@if(Session::get('cart'))
@@ -156,7 +148,7 @@
 								@csrf
 									<input type="text" class="form-control" name="coupon" placeholder="Nhập mã giảm giá"><br>
 	                          		<input type="submit" class="btn btn-default check_coupon" name="check_coupon" value="Tính mã giảm giá">
-	                          	
+
                           		</form>
                           	</td>
 					</tr>

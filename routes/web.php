@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\OrderController;
@@ -66,7 +67,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/select-feeship', [DeliveryController::class, 'select_feeship']);
     Route::post('/update-delivery', [DeliveryController::class, 'update_delivery']);
 
-//coupon
+//Coupon
     Route::get('/insert-coupon', [CouponController::class, 'insert_coupon']);
     Route::get('/delete-coupon/{coupon_id}', [CouponController::class, 'delete_coupon']);
     Route::get('/list-coupon', [CouponController::class, 'list_coupon']);
@@ -79,15 +80,20 @@ Route::get('/send-mail', [HomeController::class, 'send_mail']);
 Route::get('/admin/add-product', [ProductController::class, 'add_product']);
 Route::get('/admin/edit-product/{product_id}', [ProductController::class, 'edit_product']);
 
+Route::get('users',
+    [
+        'uses' => [UserController::class, 'index'],
+        'as' => 'Users',
+        'middleware' => 'roles'
+    ]);
 //User
-Route::get('/admin/users', [
-    'uses' => [UserController::class, 'index'],
-    'as' => 'Users',
-    'middleware' => 'roles'
-]);
 Route::get('/admin/add-users', [UserController::class, 'add_users']);
+Route::get('/admin/users', [UserController::class, 'index']);
+Route::get('/admin/impersonate/{id}', [UserController::class, 'impersonate']);
 Route::post('/admin/store-users', [UserController::class, 'store_users']);
 Route::post('/admin/assign-roles', [UserController::class, 'assign_roles']);
+Route::post('/admin/delete-user/{id}', [UserController::class, 'destroy']);
+Route::get('/admin/impersonate-destroy/{id}', [UserController::class, 'impersonate_destroy']);
 
 Route::get('/admin/delete-product/{product_id}', [ProductController::class, 'delete_product']);
 Route::get('/admin/all-product', [ProductController::class, 'all_product']);
@@ -137,3 +143,10 @@ Route::post('/confirm-order', [CheckoutController::class, 'confirm_order']);
 Route::post('/check-coupon', [CartController::class, 'check_coupon']);
 Route::get('/unset-coupon', [CouponController::class, 'unset_coupon']);
 Route::post('/insert-coupon-code', [CouponController::class, 'insert_coupon_code']);
+
+//Auth roles
+Route::get('/register-auth', [AuthController::class, 'register_auth']);
+Route::get('/login-auth', [AuthController::class, 'login_auth']);
+Route::get('/logout-auth', [AuthController::class, 'logout_auth']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
