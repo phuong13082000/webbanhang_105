@@ -44,7 +44,9 @@ class UserController extends Controller
             $user->roles()->attach(Roles::where('name', 'admin')
                 ->first());
         }
-        return redirect()->back();
+        return redirect()
+            ->back()
+            ->with('message', 'Cấp quyền thành công !');
     }
 
     public function store_users(Request $request)

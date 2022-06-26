@@ -86,6 +86,7 @@ Route::get('users',
         'as' => 'Users',
         'middleware' => 'roles'
     ]);
+
 //User
 Route::get('/admin/add-users', [UserController::class, 'add_users']);
 Route::get('/admin/users', [UserController::class, 'index']);
@@ -112,7 +113,6 @@ Route::post('/tim-kiem', [HomeController::class, 'search']);
 Route::get('/danh-muc/{slug_category_product}', [CategoryProductController::class, 'show_category_home']);
 Route::get('/thuong-hieu/{brand_slug}', [BrandProductController::class, 'show_brand_home']);
 Route::get('/chi-tiet/{product_slug}', [ProductController::class, 'details_product']);
-
 
 //Cart
 Route::post('/update-cart-quantity', [CartController::class, 'update_cart_quantity']);

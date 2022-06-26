@@ -356,7 +356,7 @@ class CheckoutController extends Controller
     {
         $email = $request->email_account;
         $password = md5($request->password_account);
-        $result = DB::table('tbl_customer')
+        $result = DB::table('tbl_customers')
             ->where('customer_email', $email)
             ->where('customer_password', $password)
             ->first();
